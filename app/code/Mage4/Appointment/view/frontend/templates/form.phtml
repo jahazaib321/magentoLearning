@@ -1,0 +1,123 @@
+<div id="appointment-form" class="mage4-appointmet-form">
+    <form class="appointment form" action=" <?= $block->getFormAction(); ?>" id="appointment-form" method="post"
+          data-hasrequired=" <?= __('* Required Fields') ?>" data-mage-init='{"validation":{}}'>
+        <input type="hidden" name="cproduct_id" id="cproduct_id" value="0"/>
+        <fieldset class="fieldset">
+            <legend class="legend">
+				<span>
+					<?= __("Appointment Form") ?>
+				</span>
+            </legend>
+            <br/>
+            <div class="field name required">
+                <label class="label" for="name">
+					<span>
+						<?= __('Name') ?>
+					</span>
+                </label>
+                <div class="control">
+                    <input name="name" id="name" title="<?= __('Name') ?>" class="input-text" type="text"
+                           data-validate="{required:true}"/>
+                </div>
+            </div>
+            <div class="field email required">
+                <label class="label" for="email">
+					<span>
+						<?= __('Email') ?>
+					</span>
+                </label>
+                <div class="control">
+                    <input name="email" id="email" title="<?= __('Email') ?>" class="input-text" type="email"
+                           data-validate="{required:true, 'validate-email':true}"/>
+                </div>
+            </div>
+            <div class="field phone required">
+                <label class="label" for="phone">
+					<span>
+						<?= __('Phone Number') ?>
+					</span>
+                </label>
+                <div class="control">
+                    <input name="phone" id="phone" title="<?= __('Phone Number') ?>" value="" class="input-text"
+                           type="text"
+                           data-validate="{required:true, 'validate-number':true, 'validate-greater-than-zero':true, 'maxlength':10}"/>
+                </div>
+            </div>
+            <div class="field date required">
+                <label class="label" for="date">
+                    <span>
+                        <?= __('Date') ?>
+                    </span>
+                </label>
+                <div class="control">
+                    <input name="date" id="date" title="<?= __('Date') ?>" value="" class="input-text" type="text"
+                           data-validate="{required:true}"/>
+                </div>
+            </div>
+            <div class="field comment required">
+                <label class="label" for="comment">
+					<span>
+						<?= __('Message') ?>
+					</span>
+                </label>
+                <div class="control">
+                    <textarea name="comment" id="comment" title="<?= __('Message') ?>" class="input-text"
+                              data-validate="{required:true}"></textarea>
+                </div>
+            </div>
+            <div class="field store required">
+                <label class="label" for="date">
+					<span>
+						<?= __('Store') ?>
+					</span>
+                </label>
+                <div class="control">
+                    <select name="store" id="store-id">
+                        <option value="selected">select…</option>
+                        <?php
+                        /** @var \Amasty\Storelocator\Model\Location $locator */
+                        $locations = $this->helper(\Mage4\Appointment\Helper\Data::class)->getStoreLocationCollection();
+                        foreach ($locations as $location) {
+                            ?>
+                            <option name="<?php echo $location['name']; ?>"
+                                    value="<?php echo $location['id']; ?>"><?php echo $location['name']; ?></option>
+                        <?php } ?>
+                    </select>
+
+                </div>
+            </div>
+        </fieldset>
+        <div class="actions-toolbar">
+            <div class="primary">
+                <input type="hidden" name="hideit" id="hideit" value=""/>
+                <button type="submit" title="
+					<?= __('Submit') ?>" class="action submit primary" id="appointment_btn">
+					<span>
+						<?= __('Submit') ?>
+					</span>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+<script type="text/javascript">
+    require(["jquery", "mage/calendar"], function ($) {
+        $('#date').datetimepicker({
+                prevText: '&#x3c;zurück', prevStatus: '',
+                prevJumpText: '&#x3c;&#x3c;', prevJumpStatus: '',
+                nextText: 'Vor&#x3e;', nextStatus: '',
+                nextJumpText: '&#x3e;&#x3e;', nextJumpStatus: '',
+                monthNames: ['January', 'February', 'March', 'April', 'May', 'June',
+                    'July', 'August', 'September', 'October', 'November', 'December'],
+                monthNamesShort: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+                    'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                dayNames: ['Sunday ', 'Monday', 'Tuesday ', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+                dayNamesShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+                dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+                showMonthAfterYear: false,
+                dateFormat: 'yy-mm-dd'
+            }
+        );
+
+    });
+</script>
