@@ -40,20 +40,6 @@
         </argument>
         <bookmark name="bookmarks"/>
         <columnsControls name="columns_controls"/>
-<!--        <filters name="listing_filters">-->
-<!--            <argument name="data" xsi:type="array">-->
-<!--                <item name="config" xsi:type="array">-->
-<!--                    <item name="templates" xsi:type="array">-->
-<!--                        <item name="filters" xsi:type="array">-->
-<!--                            <item name="select" xsi:type="array">-->
-<!--                                <item name="component" xsi:type="string">Magento_Ui/js/form/element/ui-select</item>-->
-<!--                                <item name="template" xsi:type="string">ui/grid/filters/elements/ui-select</item>-->
-<!--                            </item>-->
-<!--                        </item>-->
-<!--                    </item>-->
-<!--                </item>-->
-<!--            </argument>-->
-<!--        </filters>-->
         <massaction name="listing_massaction">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
@@ -130,7 +116,7 @@
                 </item>
                 <item name="childDefaults" xsi:type="array">
                     <item name="fieldAction" xsi:type="array">
-                        <item name="provider" xsi:type="string">storelocator_form_grid.storelocator_form_grid.storelocator_form_grid_columns_editor</item>
+                        <item name="provider" xsi:type="string">storelocator_form_grid.storelocator_form_grid00000000.storelocator_form_grid_columns_editor</item>
                         <item name="target" xsi:type="string">startEdit</item>
                         <item name="params" xsi:type="array">
                             <item name="0" xsi:type="string">${ $.$data.rowIndex }</item>
@@ -157,55 +143,12 @@
                 </item>
             </argument>
         </column>
-<!--        <column name="stores" class="Amasty\Storelocator\Block\Adminhtml\Location\Grid\Renderer\Stores">-->
-<!--            <argument name="data" xsi:type="array">-->
-<!--                <item name="config" xsi:type="array">-->
-<!--                    <item name="bodyTmpl" xsi:type="string">ui/grid/cells/html</item>-->
-<!--                    <item name="sortable" xsi:type="boolean">false</item>-->
-<!--                    <item name="label" xsi:type="string" translate="true">Store Views</item>-->
-<!--                    <item name="sortOrder" xsi:type="number">20</item>-->
-<!--                </item>-->
-<!--            </argument>-->
-<!--        </column>-->
-<!--        <column name="stores">-->
-<!--            <argument name="data" xsi:type="array">-->
-<!--                <item name="config" xsi:type="array">-->
-<!--                    <item name="bodyTmpl" xsi:type="string">ui/grid/cells/html</item>-->
-<!--                    <item name="sortable" xsi:type="boolean">false</item>-->
-<!--                    <item name="label" xsi:type="string" translate="true">Store Views</item>-->
-<!--                    <item name="sortOrder" xsi:type="number">20</item>-->
-<!--                </item>-->
-<!--            </argument>-->
-<!--        </column>-->
-<!--        <column name="status">-->
-<!--            <argument name="data" xsi:type="array">-->
-<!--                <item name="config" xsi:type="array">-->
-<!--                    <item name="filter" xsi:type="string">select</item>-->
-<!--                    <item name="sorting" xsi:type="string">asc</item>-->
-<!--                    <item name="dataType" xsi:type="string">select</item>-->
-<!--                    <item name="label" xsi:type="string" translate="true">Status</item>-->
-<!--                    <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/select</item>-->
-<!--                    <item name="sortOrder" xsi:type="number">30</item>-->
-<!--                    <item name="editor" xsi:type="array">-->
-<!--                        <item name="editorType" xsi:type="string">select</item>-->
-<!--                    </item>-->
-<!--                </item>-->
-<!--                <item name="options" xsi:type="array">-->
-<!--                    <item name="disabled" xsi:type="array">-->
-<!--                        <item name="value" xsi:type="string">0</item>-->
-<!--                        <item name="label" xsi:type="string" translate="true">Disabled</item>-->
-<!--                    </item>-->
-<!--                    <item name="enabled" xsi:type="array">-->
-<!--                        <item name="value" xsi:type="string">1</item>-->
-<!--                        <item name="label" xsi:type="string" translate="true">Enabled</item>-->
-<!--                    </item>-->
-<!--                </item>-->
         <column name="name">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="filter" xsi:type="string">text</item>
                     <item name="sorting" xsi:type="string">asc</item>
-                    <item name="label" xsi:type="string" translate="true">Name</item>
+                    <item name="label" xsi:type="string" translate="true">Location Name</item>
                     <item name="sortOrder" xsi:type="number">40</item>
                     <item name="editor" xsi:type="array">
                         <item name="editorType" xsi:type="string">text</item>
@@ -229,12 +172,90 @@
                 </item>
             </argument>
         </column>
+        <column name="state_id">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="sorting" xsi:type="string">asc</item>
+                    <item name="label" xsi:type="string" translate="true">State/Province</item>
+                    <item name="sortOrder" xsi:type="number">51</item>
+                    <item name="editor" xsi:type="array">
+                        <item name="editorType" xsi:type="string">text</item>
+                    </item>
+                </item>
+            </argument>
+        </column>
+        <column name="lat">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="sorting" xsi:type="string">asc</item>
+                    <item name="label" xsi:type="string" translate="true">Location Latitude</item>
+                    <item name="sortOrder" xsi:type="number">52</item>
+                    <item name="editor" xsi:type="array">
+                        <item name="editorType" xsi:type="string">text</item>
+                    </item>
+                </item>
+            </argument>
+        </column>
+        <column name="lng">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="sorting" xsi:type="string">asc</item>
+                    <item name="label" xsi:type="string" translate="true">Location Longitude</item>
+                    <item name="sortOrder" xsi:type="number">53</item>
+                    <item name="editor" xsi:type="array">
+                        <item name="editorType" xsi:type="string">text</item>
+                    </item>
+                </item>
+            </argument>
+        </column>
+        <column name="phone">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="sorting" xsi:type="string">asc</item>
+                    <item name="label" xsi:type="string" translate="true">Phone</item>
+                    <item name="sortOrder" xsi:type="number">54</item>
+                    <item name="editor" xsi:type="array">
+                        <item name="editorType" xsi:type="string">text</item>
+                    </item>
+                </item>
+            </argument>
+        </column>
+        <column name="email">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="sorting" xsi:type="string">asc</item>
+                    <item name="label" xsi:type="string" translate="true">Email</item>
+                    <item name="sortOrder" xsi:type="number">55</item>
+                    <item name="editor" xsi:type="array">
+                        <item name="editorType" xsi:type="string">text</item>
+                    </item>
+                </item>
+            </argument>
+        </column>
+        <column name="img">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="sorting" xsi:type="string">asc</item>
+                    <item name="label" xsi:type="string" translate="true">Image</item>
+                    <item name="sortOrder" xsi:type="number">57</item>
+                    <item name="editor" xsi:type="array">
+                        <item name="editorType" xsi:type="string">text</item>
+                    </item>
+                </item>
+            </argument>
+        </column>
         <column name="zip">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="filter" xsi:type="string">text</item>
                     <item name="sorting" xsi:type="string">asc</item>
-                    <item name="label" xsi:type="string" translate="true">Zip</item>
+                    <item name="label" xsi:type="string" translate="true">Zipcode</item>
                     <item name="sortOrder" xsi:type="number">60</item>
                     <item name="editor" xsi:type="array">
                         <item name="editorType" xsi:type="string">text</item>
@@ -247,7 +268,7 @@
                 <item name="config" xsi:type="array">
                     <item name="filter" xsi:type="string">text</item>
                     <item name="sorting" xsi:type="string">asc</item>
-                    <item name="label" xsi:type="string" translate="true">Street</item>
+                    <item name="label" xsi:type="string" translate="true">Location Street</item>
                     <item name="sortOrder" xsi:type="number">70</item>
                     <item name="editor" xsi:type="array">
                         <item name="editorType" xsi:type="string">text</item>
@@ -270,34 +291,6 @@
                 <item name="options" xsi:type="object">Magento\Directory\Model\Config\Source\Country</item>
             </argument>
         </column>
-<!--        <column name="position">-->
-<!--            <argument name="data" xsi:type="array">-->
-<!--                <item name="config" xsi:type="array">-->
-<!--                    <item name="filter" xsi:type="string">text</item>-->
-<!--                    <item name="sorting" xsi:type="string">asc</item>-->
-<!--                    <item name="label" xsi:type="string" translate="true">Position</item>-->
-<!--                    <item name="sortOrder" xsi:type="number">80</item>-->
-<!--                    <item name="editor" xsi:type="array">-->
-<!--                        <item name="editorType" xsi:type="string">text</item>-->
-<!--                    </item>-->
-<!--                </item>-->
-<!--            </argument>-->
-<!--        </column>-->
-<!--        <actionsColumn name="actions" class="Amasty\Base\Ui\Component\Listing\Column\ViewAction">-->
-<!--            <argument name="data" xsi:type="array">-->
-<!--                <item name="config" xsi:type="array">-->
-<!--                    <item name="indexField" xsi:type="string">id</item>-->
-<!--                    <item name="urlEntityParamName" xsi:type="string">id</item>-->
-<!--                    <item name="sortOrder" xsi:type="number">90</item>-->
-<!--                    <item name="buttons" xsi:type="array">-->
-<!--                        <item name="edit" xsi:type="array">-->
-<!--                            <item name="urlPath" xsi:type="string">amasty_storelocator/location/edit</item>-->
-<!--                            <item name="itemLabel" xsi:type="string" translate="true">Edit</item>-->
-<!--                        </item>-->
-<!--                    </item>-->
-<!--                </item>-->
-<!--            </argument>-->
-<!--        </actionsColumn>-->
         <actionsColumn name="actions">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
