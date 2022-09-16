@@ -16,7 +16,7 @@ abstract class Data extends Action
      *
      * @see _isAllowed()
      */
-    const ACTION_RESOURCE = 'Mage4_StoreLocator::dat';
+    const ACTION_RESOURCE = 'Mage4_StoreLocator::storelocator';
 
     /**
      * Data repository

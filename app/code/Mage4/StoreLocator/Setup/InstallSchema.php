@@ -29,13 +29,13 @@ class InstallSchema implements InstallSchemaInterface
             'name',
             Table::TYPE_TEXT,
             255,
-            ['nullable' => true],
-            'Location Name'
+            ['nullable' => false],
+            'Store Name'
         )->addColumn(
             'country',
             Table::TYPE_TEXT,
             255,
-            ['nullable' => true],
+            ['nullable' => false],
             'Country'
         )->addColumn(
             'state_id',
@@ -47,47 +47,35 @@ class InstallSchema implements InstallSchemaInterface
             'city',
             Table::TYPE_TEXT,
             255,
-            ['nullable' => true],
+            ['nullable' => false],
             'City'
         )->addColumn(
             'zip',
             Table::TYPE_INTEGER,
             255,
-            ['nullable' => true],
+            ['nullable' => false],
             'Zipcode'
         )->addColumn(
             'street',
             Table::TYPE_TEXT,
             255,
-            ['nullable' => true],
+            ['nullable' => false],
             'Location Street'
-//        )->addColumn(
-//            'status',
-//            Table::TYPE_INTEGER,
-//            255,
-//            ['nullable' => false],
-//            'Location Status'
         )->addColumn(
             'lat',
             Table::TYPE_INTEGER,
             255,
-            ['nullable' => true],
+            ['nullable' => false],
             'Location Latitude'
         )->addColumn(
             'lng',
             Table::TYPE_INTEGER,
             255,
-            ['nullable' => true],
+            ['nullable' => false],
             'Location Longitude'
-//        )->addColumn(
-//            'position',
-//            Table::TYPE_INTEGER,
-//            255,
-//            ['nullable' => false],
-//            'Location Position'
         )->addColumn(
             'phone',
-            Table::TYPE_INTEGER,
+            Table::TYPE_TEXT,
             255,
             ['nullable' => true],
         )->addColumn(
@@ -100,55 +88,11 @@ class InstallSchema implements InstallSchemaInterface
             Table::TYPE_TEXT,
             255,
             ['nullable' => true],
-//        )->addColumn(
-//            'stores',
-//            Table::TYPE_INTEGER,
-//            255,
-//            ['nullable' => false],
-//             'Stores Ids'
         )->addIndex(
             $setup->getIdxName('mage4_storelocator_managestores', ['id']),
             ['id']
         );
         $setup->getConnection()->createTable($table);
-
-//        $table = $setup->getConnection()->newTable(
-//            $setup->getTable('mage4_storelocator_managecategory')
-//        )->addColumn(
-//            'id',
-//            Table::TYPE_INTEGER,
-//            null,
-//            ['identity' => true, 'nullable' => false, 'primary' => true],
-//            'Item ID'
-//        )->addColumn(
-//            'status',
-//            Table::TYPE_INTEGER,
-//            255,
-//            ['nullable' => false],
-//            'Category Status'
-//        )->addColumn(
-//            'name',
-//            Table::TYPE_TEXT,
-//            255,
-//            ['nullable' => false],
-//            'Category Name'
-//        )->addColumn(
-//            'stores',
-//            Table::TYPE_INTEGER,
-//            255,
-//            ['nullable' => false],
-//            'Assigned Websites'
-//        )->addColumn(
-//            'position',
-//            Table::TYPE_INTEGER,
-//            255,
-//            ['nullable' => false],
-//            'Store Category Position'
-//        )->addIndex(
-//            $setup->getIdxName('mage4_storelocator_managecategory', ['id']),
-//            ['id']
-//        );
-//        $setup->getConnection()->createTable($table);
 
         $setup->endSetup();
     }

@@ -41,63 +41,16 @@
         <bookmark name="bookmarks"/>
         <columnsControls name="columns_controls"/>
         <massaction name="listing_massaction">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="component" xsi:type="string">Magento_Ui/js/grid/tree-massactions</item>
-                    <item name="indexField" xsi:type="string">id</item>
-                </item>
-            </argument>
-            <action name="activate">
-                <argument name="data" xsi:type="array">
-                    <item name="config" xsi:type="array">
-                        <item name="type" xsi:type="string">massActivate</item>
-                        <item name="label" xsi:type="string" translate="true">Enable</item>
-                        <item name="url" xsi:type="url" path="*/*/massAction">
-                            <param name="_current">1</param>
-                            <param name="action">activate</param>
-                        </item>
-                    </item>
-                </argument>
-            </action>
-            <action name="inactivate">
-                <argument name="data" xsi:type="array">
-                    <item name="config" xsi:type="array">
-                        <item name="type" xsi:type="string">massInactivate</item>
-                        <item name="label" xsi:type="string" translate="true">Disable</item>
-                        <item name="url" xsi:type="url" path="*/*/massAction">
-                            <param name="_current">1</param>
-                            <param name="action">inactivate</param>
-                        </item>
-                    </item>
-                </argument>
-            </action>
             <action name="delete">
-                <argument name="data" xsi:type="array">
-                    <item name="config" xsi:type="array">
-                        <item name="type" xsi:type="string">delete</item>
-                        <item name="label" xsi:type="string" translate="true">Delete</item>
-                        <item name="url" xsi:type="url" path="*/*/massAction">
-                            <param name="_current">1</param>
-                            <param name="action">delete</param>
-                        </item>
-                        <item name="confirm" xsi:type="array">
-                            <item name="title" xsi:type="string" translate="true">Delete items</item>
-                            <item name="message" xsi:type="string" translate="true">Are you sure you want to delete selected items?</item>
-                        </item>
-                    </item>
-                </argument>
-            </action>
-            <action name="edit">
-                <argument name="data" xsi:type="array">
-                    <item name="config" xsi:type="array">
-                        <item name="type" xsi:type="string">edit</item>
-                        <item name="label" xsi:type="string" translate="true">Edit</item>
-                        <item name="callback" xsi:type="array">
-                            <item name="target" xsi:type="string">editSelected</item>
-                            <item name="provider" xsi:type="string">storelocator_form_grid.storelocator_form_grid.storelocator_form_grid_columns_editor</item>
-                        </item>
-                    </item>
-                </argument>
+                <settings>
+                    <confirm>
+                        <message translate="true">Are you sure to delete selected items?</message>
+                        <title translate="true">Delete items</title>
+                    </confirm>
+                    <url path="storelocator/index/massaction"/>
+                    <type>delete</type>
+                    <label translate="true">Delete</label>
+                </settings>
             </action>
         </massaction>
         <paging name="listing_paging"/>
@@ -116,7 +69,7 @@
                 </item>
                 <item name="childDefaults" xsi:type="array">
                     <item name="fieldAction" xsi:type="array">
-                        <item name="provider" xsi:type="string">storelocator_form_grid.storelocator_form_grid00000000.storelocator_form_grid_columns_editor</item>
+                        <item name="provider" xsi:type="string">storelocator_form_grid.storelocator_form_grid.storelocator_form_grid_columns_editor</item>
                         <item name="target" xsi:type="string">startEdit</item>
                         <item name="params" xsi:type="array">
                             <item name="0" xsi:type="string">${ $.$data.rowIndex }</item>
@@ -237,7 +190,20 @@
                 </item>
             </argument>
         </column>
-        <column name="img">
+<!--        <column name="image">-->
+<!--            <argument name="data" xsi:type="array">-->
+<!--                <item name="config" xsi:type="array">-->
+<!--                    <item name="filter" xsi:type="string">text</item>-->
+<!--                    <item name="sorting" xsi:type="string">asc</item>-->
+<!--                    <item name="label" xsi:type="string" translate="true">Image</item>-->
+<!--                    <item name="sortOrder" xsi:type="number">57</item>-->
+<!--                    <item name="editor" xsi:type="array">-->
+<!--                        <item name="editorType" xsi:type="string">text</item>-->
+<!--                    </item>-->
+<!--                </item>-->
+<!--            </argument>-->
+<!--        </column>-->
+        <column name="image" component="Magento_Ui/js/grid/columns/thumbnail" class="Mage4\StoreLocator\Ui\Component\Listing\Column\Image">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="filter" xsi:type="string">text</item>
@@ -249,6 +215,11 @@
                     </item>
                 </item>
             </argument>
+            <settings>
+                <label translate="true">Image</label>
+                <hasPreview>1</hasPreview>
+                <sortable>false</sortable>
+            </settings>
         </column>
         <column name="zip">
             <argument name="data" xsi:type="array">
@@ -291,7 +262,7 @@
                 <item name="options" xsi:type="object">Magento\Directory\Model\Config\Source\Country</item>
             </argument>
         </column>
-        <actionsColumn name="actions">
+        <actionsColumn class="Mage4\StoreLocator\Ui\Component\Listing\Columns\Actions" name="actions">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="indexField" xsi:type="string">id</item>
@@ -299,8 +270,12 @@
                     <item name="sortOrder" xsi:type="number">90</item>
                     <item name="buttons" xsi:type="array">
                         <item name="edit" xsi:type="array">
-                            <item name="urlPath" xsi:type="string">storelocator/location/edit</item>
+                            <item name="urlPath" xsi:type="string">storelocator/item/editaction</item>
                             <item name="itemLabel" xsi:type="string" translate="true">Edit</item>
+                        </item>
+                        <item name="delete" xsi:type="array">
+                            <item name="urlPath" xsi:type="string">storelocator/manage/deleteaction</item>
+                            <item name="itemLabel" xsi:type="string" translate="true">Delete</item>
                         </item>
                     </item>
                 </item>
