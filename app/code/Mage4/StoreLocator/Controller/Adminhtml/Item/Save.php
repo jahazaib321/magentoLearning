@@ -33,14 +33,15 @@ class Save extends Action
      */
     public function execute()
     {
-        $data = $this->getRequest()->getParams();
+        $data = $this->getRequest()->getPost('general');
 
         $model = $this->itemFactory->create();
-        $model->load($data['id']);
+        $id = $this->getRequest()->getParam('id');
+        $model->load($id);
 
-        if (!$model->getId()) {
-            unset($data['id']);
-        }
+//        if (!$model->getId()) {
+//            unset($data['id']);
+//        }
 
 
         if ($data) {

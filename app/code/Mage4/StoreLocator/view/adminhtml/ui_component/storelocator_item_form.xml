@@ -23,7 +23,10 @@
                 <item name="url" xsi:type="string">storelocator/index/index</item>
             </item>
         </item>
-        <item name="template" xsi:type="string">templates/form/collapsible</item>
+        <item name="layout" xsi:type="array">
+            <item name="type" xsi:type="string">tabs</item>
+            <item name="navContainerName" xsi:type="string">left</item>
+        </item>
     </argument>
     <settings>
         <buttons>
@@ -76,7 +79,7 @@
         <field name="name">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="label" xsi:type="string" translate="true">Location Name</item>
+                    <item name="label" xsi:type="string" translate="true">Store Name</item>
                     <item name="formElement" xsi:type="string">input</item>
                     <item name="visible" xsi:type="boolean">true</item>
                     <item name="dataType" xsi:type="string">text</item>
@@ -112,8 +115,18 @@
                         <item name="target" xsi:type="string">${ $.provider }:${ $.parentScope }.country</item>
                         <item name="field" xsi:type="string">country_id</item>
                     </item>
+                </item>
+            </argument>
+        </field>
+        <field name="state">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="label" xsi:type="string" translate="true">State/Province</item>
+                    <item name="formElement" xsi:type="string">input</item>
                     <item name="validation" xsi:type="array">
-                        <item name="required-entry" xsi:type="boolean">false</item>
+                        <item name="required-entry" xsi:type="boolean">true</item>
                     </item>
                 </item>
             </argument>
@@ -147,7 +160,7 @@
         <field name="street">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="label" xsi:type="string" translate="true">Location Street</item>
+                    <item name="label" xsi:type="string" translate="true">Street</item>
                     <item name="formElement" xsi:type="string">input</item>
                     <item name="visible" xsi:type="boolean">true</item>
                     <item name="dataType" xsi:type="string">text</item>
@@ -162,7 +175,7 @@
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="dataType" xsi:type="string">text</item>
-                    <item name="label" xsi:type="string" translate="true">Location Latitude</item>
+                    <item name="label" xsi:type="string" translate="true">Latitude</item>
                     <item name="formElement" xsi:type="string">input</item>
                     <item name="notice" xsi:type="string" translate="true">Valid latitudes values are from -85 to 85 degrees.</item>
                     <item name="validation" xsi:type="array">
@@ -178,7 +191,7 @@
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="dataType" xsi:type="string">text</item>
-                    <item name="label" xsi:type="string" translate="true">Location Longitude</item>
+                    <item name="label" xsi:type="string" translate="true">Longitude</item>
                     <item name="formElement" xsi:type="string">input</item>
                     <item name="notice" xsi:type="string" translate="true">Valid longitudes values are from -180 to 180 degrees.</item>
                     <item name="validation" xsi:type="array">
@@ -218,9 +231,10 @@
                 <item name="config" xsi:type="array">
                     <item name="dataType" xsi:type="string">string</item>
                     <item name="label" xsi:type="string" translate="true">Image</item>
-                    <item name="formElement" xsi:type="string">fileUploader</item>
+                    <item name="formElement" xsi:type="string">imageUploader</item>
+                    <item name="maxFileSize" xsi:type="string">2097152</item>
                     <item name="elementTmpl" xsi:type="string">ui/form/element/uploader/uploader</item>
-                    <item name="previewTmpl" xsi:type="string">ui/form/element/uploader/preview</item>
+                    <item name="previewTmpl" xsi:type="string">Magento_Catalog/image-preview</item>
                     <item name="sortOrder" xsi:type="number">10</item>
                     <item name="required" xsi:type="boolean">true</item>
                     <item name="allowedExtensions" xsi:type="string">jpg jpeg gif png svg</item>

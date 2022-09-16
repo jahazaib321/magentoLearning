@@ -38,11 +38,11 @@ class InstallSchema implements InstallSchemaInterface
             ['nullable' => false],
             'Country'
         )->addColumn(
-            'state_id',
+            'state',
             Table::TYPE_TEXT,
             255,
-            ['nullable' => true],
-            'State/Province'
+            ['nullable' => false],
+            'State'
         )->addColumn(
             'city',
             Table::TYPE_TEXT,
@@ -60,19 +60,19 @@ class InstallSchema implements InstallSchemaInterface
             Table::TYPE_TEXT,
             255,
             ['nullable' => false],
-            'Location Street'
+            'Street'
         )->addColumn(
             'lat',
             Table::TYPE_INTEGER,
             255,
             ['nullable' => false],
-            'Location Latitude'
+            'Latitude'
         )->addColumn(
             'lng',
             Table::TYPE_INTEGER,
             255,
             ['nullable' => false],
-            'Location Longitude'
+            'Longitude'
         )->addColumn(
             'phone',
             Table::TYPE_TEXT,

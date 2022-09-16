@@ -1,7 +1,19 @@
 <?xml version="1.0"?>
-<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <head>
         <title>Store Locator Form Edit</title>
     </head>
     <update handle="storelocator_item_new"/>
+<!--    <referenceContainer name="content">-->
+<!--        <block class="Mage4\StoreLocator\Block\Edit" name="storelocator_item_new" template="Mage4_StoreLocator::index.phtml" />-->
+<!--    </referenceContainer>-->
 </page>
+
+
+<!--<?xml version="1.0"?>-->
+<!--<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
+<!--      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">-->
+<!--<referenceContainer name="content">-->
+<!--    <block class="Mage4\StoreLocator\Block\Insert" name="storelocator_index_insert" template="Mage4::insertdata.phtml" />-->
+<!--</referenceContainer>-->
+<!--</page>-->

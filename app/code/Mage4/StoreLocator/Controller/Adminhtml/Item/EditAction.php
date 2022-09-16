@@ -2,30 +2,98 @@
 
 namespace Mage4\StoreLocator\Controller\Adminhtml\Item;
 
-use Mage4\StoreLocator\Controller\Adminhtml\Data;
+use Magento\Backend\App\Action;
+use Magento\Framework\Controller\ResultFactory;
 
-class EditAction extends Data
+/**
+ * Edit form controller
+ */
+class EditAction extends \Magento\Backend\App\Action
 {
+
     /**
-     * @return \Magento\Framework\View\Result\Page
+     * Core registry
+     *
+     * @var \Magento\Framework\Registry
+     */
+    protected $_coreRegistry = null;
+
+    /**
+     * @var \Magento\Backend\Model\Session
+     */
+    protected $adminSession;
+
+    /**
+     * @var \Mage4\StoreLocator\Model\ItemFactory
+     */
+    protected $itemFactory;
+
+    /**
+     * @param Action\Context                 $context
+     * @param \Magento\Framework\Registry    $registry
+     * @param \Magento\Backend\Model\Session $adminSession
+     * @param \Mage4\StoreLocator\Model\ItemFactory     $itemFactory
+     */
+    public function __construct(
+        Action\Context $context,
+        \Magento\Framework\Registry $registry,
+        \Magento\Backend\Model\Session $adminSession,
+        \Mage4\StoreLocator\Model\ItemFactory $itemFactory
+    ) {
+        $this->_coreRegistry = $registry;
+        $this->adminSession = $adminSession;
+        $this->itemFactory = $itemFactory;
+        parent::__construct($context);
+    }
+
+    /**
+     * @return boolean
+     */
+    protected function _isAllowed()
+    {
+        return true;
+    }
+
+    /**
+     * Add form breadcrumbs
+     *
+     * @return $this
+     */
+    protected function _initAction()
+    {
+        /** @var \Magento\Backend\Model\View\Result\Page $resultPage */
+        $resultPage = $this->resultFactory->create(ResultFactory::TYPE_PAGE);
+        $resultPage->setActiveMenu('Mage4_StoreLocator::storelocator')->addBreadcrumb(__('Form'), __('Form'))->addBreadcrumb(__('Manage Form'), __('Manage Form'));
+        return $resultPage;
+    }
+
+    /**
+     * @return \Magento\Backend\Model\View\Result\Page
      */
     public function execute()
     {
-        $Id = $this->getRequest()->getParam('id');
-        $resultPage = $this->resultPageFactory->create();
-        $resultPage->setActiveMenu('Mage4_StoreLocator::storelocator')
-            ->addBreadcrumb(__('Data'), __('Data'))
-            ->addBreadcrumb(__('Manage Data'), __('Manage Data'));
+        $id = $this->getRequest()->getParam('id');
+        $model = $this->itemFactory->create();
 
-        if ($Id === null) {
-            $resultPage->addBreadcrumb(__('New Data'), __('New Data'));
-            $resultPage->getConfig()->getTitle()->prepend(__('New Data'));
-        } else {
-            $resultPage->addBreadcrumb(__('Edit Data'), __('Edit Data'));
-            $resultPage->getConfig()->getTitle()->prepend(
-                $this->dataRepository->getById($Id)->getName()
-            );
+        if ($id) {
+            $model->load($id);
+            if (!$model->getId()) {
+                $this->messageManager->addError(__('Sorry'));
+                $resultRedirect = $this->resultRedirectFactory->create();
+                return $resultRedirect->setPath('*/*/');
+            }
         }
+        $data = $this->adminSession->getFormData(true);
+        if (!empty($data)) {
+            $model->setData($data);
+        }
+        $this->_coreRegistry->register('mage4_storelocator', $model);
+
+        $resultPage = $this->_initAction();
+        $resultPage->addBreadcrumb($id ? __('Edit Form') : __('New Form'), $id ? __('Edit Form') : __('New Form'));
+        $resultPage->getConfig()->getTitle()->prepend(__('Grids'));
+        $resultPage->getConfig()->getTitle()->prepend($model->getId() ? $model->getTitle() : __('New Form'));
+
         return $resultPage;
     }
 }
