@@ -8,7 +8,7 @@
         <section id="storelocator" translate="label" type="text" sortOrder="400" showInDefault="1">
             <label>Store Locator</label>
             <tab>mage4</tab>
-            <resource>Mage4_StoreLocat::configuration</resource>
+            <resource>Mage4_StoreLocator::configuration</resource>
             <group id="google_api_key" translate="label" type="text" sortOrder="10" showInDefault="1">
                 <label>Google Api Key</label>
                 <field id="frontend" translate="label" sortOrder="10" type="text" showInDefault="1">
@@ -20,6 +20,40 @@
                     <validate>required-entry</validate>
                 </field>
             </group>
+            <group id="seo" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                <label>Search Engine Optimization</label>
+                <field id="meta_title" translate="label" sortOrder="20" type="text" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Meta Title</label>
+                </field>
+                <field id="meta_description" translate="label" sortOrder="20" type="textarea" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Meta Description</label>
+                </field>
+                <field id="meta_keywords" translate="label" sortOrder="20" type="text" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Meta Keywords</label>
+                </field>
+            </group>
+            <group id="style" translate="label" type="text" sortOrder="10" showInDefault="1">
+                <label>Map Styling</label>
+                <field id="zoom" translate="label" sortOrder="20" type="text" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Default Zoom</label>
+                </field>
+                <field id="json" translate="label" sortOrder="20" type="textarea" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Google map style json</label>
+                </field>
+                <field id="markericon" type="image" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Marker Icon</label>
+                    <backend_model>Magento\Config\Model\Config\Backend\Image</backend_model>
+                    <upload_dir config="system/filesystem/media" scope_info="1">mage4/storelocator/markericon</upload_dir>
+                    <base_url type="media" scope_info="1">mage4/storelocator/markericon</base_url>
+                </field>
+                <field id="selected_markericon" type="image" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Selected marker icon</label>
+                    <backend_model>Magento\Config\Model\Config\Backend\Image</backend_model>
+                    <upload_dir config="system/filesystem/media" scope_info="1">mage4/storelocator/selected_markericon</upload_dir>
+                    <base_url type="media" scope_info="1">mage4/storelocator/selected_markericon</base_url>
+                </field>
+            </group>
         </section>
     </system>
 </config>
+

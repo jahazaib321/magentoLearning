@@ -1,0 +1,14 @@
+type Query {
+    getStores : StoreLocatorOutput @resolver(class: "Mage4\\StoreLocator\\Model\\Resolver\\StoresResolver") @doc(description:"Test Module Datapassing")
+}
+
+type StoreLocatorOutput {
+    total_count : String
+    items : [StoreItem]
+}
+
+type StoreItem {
+    name : String
+    address : String
+    city : String
+}
