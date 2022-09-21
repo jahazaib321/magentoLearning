@@ -1,5 +1,5 @@
 type Query {
-    getStores : StoreLocatorOutput @resolver(class: "Mage4\\StoreLocator\\Model\\Resolver\\StoresResolver") @doc(description:"Test Module Datapassing")
+    getMapStores : StoreLocatorOutput @resolver(class: "Mage4\\StoreLocator\\Model\\Resolver\\StoresResolver") @doc(description:"Test Module Datapassing")
 }
 
 type StoreLocatorOutput {
