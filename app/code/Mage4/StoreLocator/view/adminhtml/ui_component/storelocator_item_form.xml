@@ -43,7 +43,7 @@
             <argument name="name" xsi:type="string">storelocator_item_form_data_source</argument>
             <argument name="primaryFieldName" xsi:type="string">id</argument>
             <argument name="requestFieldName" xsi:type="string">id</argument>
-            <argument name="collectionFactory" xsi:type="object">Mage4\StoreLocator\Model\ResourceModel\Item\CollectionFactory</argument>
+            <argument name="collectionFactory" xsi:type="object">Mage4\StoreLocator\Model\ResourceModel\Store\CollectionFactory</argument>
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="submit_url" xsi:type="url" path="storelocator/item/save"/>

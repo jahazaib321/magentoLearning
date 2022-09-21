@@ -2,7 +2,7 @@
 
 namespace Mage4\StoreLocator\Controller\Adminhtml\Index;
 
-use Mage4\StoreLocator\Model\ResourceModel\Item\CollectionFactory;
+use Mage4\StoreLocator\Model\ResourceModel\Store\CollectionFactory;
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
 use Magento\Framework\Controller\Result\JsonFactory;

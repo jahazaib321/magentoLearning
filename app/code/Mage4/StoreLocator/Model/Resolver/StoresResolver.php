@@ -22,12 +22,19 @@ class StoresResolver implements ResolverInterface
         $collection = $this->collectionFactory->create();
         return [
             'total_count' => $collection->count(),
-            'items' => [
-                ['name' => "test", 'address' => "sadas"],
-                ['name' => "asdas", 'address' => "sadas"],
-                ['name' => "aasasd", 'address' => "sss"],
-                ['name' => "dasd", 'address' => "sadas"],
-            ]
+            'items' => $collection->getData(),
+            'id' => $collection->getData(),
+            'name' => $collection->getData(),
+            'country' => $collection->getData(),
+            'state' => $collection->getData(),
+            'city' => $collection->getData(),
+            'zip' => $collection->getData(),
+            'street' => $collection->getData(),
+            'lat' => $collection->getData(),
+            'lng' => $collection->getData(),
+            'phone' => $collection->getData(),
+            'email' => $collection->getData(),
+            'image' => $collection->getData(),
         ];
     }
 }
