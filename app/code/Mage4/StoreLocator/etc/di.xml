@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <preference for="Mage4\StoreLocator\Api\DataRepositoryInterface" type="Mage4\StoreLocator\Model\DataRepository" />
-    <preference for="Mage4\StoreLocator\Api\Data\DataInterface" type="Mage4\StoreLocator\Model\Data" />
+    <preference for="Mage4\StoreLocator\Api\StoreRepositoryInterface" type="Mage4\StoreLocator\Model\StoreRepository" />
+    <preference for="Mage4\StoreLocator\Api\Data\StoreInterface" type="Mage4\StoreLocator\Model\Store" />
     <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
         <arguments>
             <argument name="collections" xsi:type="array">

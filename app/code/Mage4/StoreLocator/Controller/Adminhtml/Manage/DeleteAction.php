@@ -1,20 +1,21 @@
 <?php
+
 namespace Mage4\StoreLocator\Controller\Adminhtml\Manage;
 
 use Exception;
-use Mage4\StoreLocator\Model\ItemFactory;
+use Mage4\StoreLocator\Model\StoreFactory;
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
 
 class DeleteAction extends Action
 {
-    public $blogFactory;
+    public $storeFactory;
 
     public function __construct(
-        Context $context,
-        ItemFactory $ItemFactory
+        Context      $context,
+        StoreFactory $storeFactory
     ) {
-        $this->ItemFactory = $ItemFactory;
+        $this->storeFactory = $storeFactory;
         parent::__construct($context);
     }
 
@@ -23,7 +24,7 @@ class DeleteAction extends Action
         $resultRedirect = $this->resultRedirectFactory->create();
         $id = $this->getRequest()->getParam('id');
         try {
-            $blogModel = $this->ItemFactory->create();
+            $blogModel = $this->storeFactory->create();
             $blogModel->load($id);
             $blogModel->delete();
             $this->messageManager->addSuccessMessage(__('You deleted the record.'));

@@ -11,7 +11,7 @@ class Store extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
      */
     protected function _construct() // phpcs:ignore PSR2.Methods.MethodDeclaration
     {
-        $this->_init('mage4_storelocator_managestores', 'store_id');
+        $this->_init('mage4_storelocator_managestores', 'id');
     }
 }
 

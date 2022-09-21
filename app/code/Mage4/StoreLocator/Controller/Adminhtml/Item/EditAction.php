@@ -24,25 +24,25 @@ class EditAction extends \Magento\Backend\App\Action
     protected $adminSession;
 
     /**
-     * @var \Mage4\StoreLocator\Model\ItemFactory
+     * @var \Mage4\StoreLocator\Model\StoreFactory
      */
-    protected $itemFactory;
+    protected $storeFactory;
 
     /**
      * @param Action\Context                 $context
      * @param \Magento\Framework\Registry    $registry
      * @param \Magento\Backend\Model\Session $adminSession
-     * @param \Mage4\StoreLocator\Model\ItemFactory     $itemFactory
+     * @param \Mage4\StoreLocator\Model\StoreFactory     $storeFactory
      */
     public function __construct(
         Action\Context $context,
         \Magento\Framework\Registry $registry,
         \Magento\Backend\Model\Session $adminSession,
-        \Mage4\StoreLocator\Model\ItemFactory $itemFactory
+        \Mage4\StoreLocator\Model\StoreFactory $storeFactory
     ) {
         $this->_coreRegistry = $registry;
         $this->adminSession = $adminSession;
-        $this->itemFactory = $itemFactory;
+        $this->storeFactory = $storeFactory;
         parent::__construct($context);
     }
 
@@ -73,7 +73,7 @@ class EditAction extends \Magento\Backend\App\Action
     public function execute()
     {
         $id = $this->getRequest()->getParam('id');
-        $model = $this->itemFactory->create();
+        $model = $this->storeFactory->create();
 
         if ($id) {
             $model->load($id);

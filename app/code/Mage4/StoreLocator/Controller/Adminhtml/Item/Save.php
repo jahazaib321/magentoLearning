@@ -3,7 +3,7 @@
 namespace Mage4\StoreLocator\Controller\Adminhtml\Item;
 
 use Mage4\StoreLocator\Model\ImageUploader;
-use Mage4\StoreLocator\Model\ItemFactory;
+use Mage4\StoreLocator\Model\StoreFactory;
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
 use Magento\Framework\Api\DataObjectHelper;
@@ -12,17 +12,17 @@ use Magento\Framework\Model\AbstractModel;
 
 class Save extends Action
 {
-    private $itemFactory;
+    private $storeFactory;
     private $imageUploader;
 
     public function __construct(
         Context $context,
-        ItemFactory                         $itemFactory,
+         StoreFactory                         $itemFactory,
         ImageUploader                       $imageUploader,
         DataObjectHelper                    $dataObjectHelper
     )
     {
-        $this->itemFactory = $itemFactory;
+        $this->storeFactory = $itemFactory;
         $this->imageUploader = $imageUploader;
         $this->dataObjectHelper = $dataObjectHelper;
         parent::__construct($context);
@@ -35,7 +35,7 @@ class Save extends Action
     {
         $data = $this->getRequest()->getPost('general');
 
-        $model = $this->itemFactory->create();
+        $model = $this->storeFactory->create();
         $id = $this->getRequest()->getParam('id');
         $model->load($id);
 

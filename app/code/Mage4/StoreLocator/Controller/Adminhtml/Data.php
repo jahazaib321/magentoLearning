@@ -7,7 +7,7 @@ use Magento\Backend\App\Action\Context;
 use Magento\Framework\Registry;
 use Magento\Framework\View\Result\PageFactory;
 use Magento\Backend\Model\View\Result\ForwardFactory;
-use Mage4\StoreLocator\Api\DataRepositoryInterface;
+use Mage4\StoreLocator\Api\StoreRepositoryInterface;
 
 abstract class Data extends Action
 {
@@ -21,9 +21,9 @@ abstract class Data extends Action
     /**
      * Data repository
      *
-     * @var DataRepositoryInterface
+     * @var StoreRepositoryInterface
      */
-    protected $dataRepository;
+    protected $storeRepository;
 
     /**
      * Core registry
@@ -50,21 +50,21 @@ abstract class Data extends Action
      * Data constructor.
      *
      * @param Registry $registry
-     * @param DataRepositoryInterface $dataRepository
+     * @param StoreRepositoryInterface $storeRepository
      * @param PageFactory $resultPageFactory
      * @param ForwardFactory $resultForwardFactory
      * @param Context $context
      */
     public function __construct(
         Registry                $registry,
-        DataRepositoryInterface $dataRepository,
+        StoreRepositoryInterface $storeRepository,
         PageFactory             $resultPageFactory,
         ForwardFactory          $resultForwardFactory,
         Context                 $context
     )
     {
         $this->coreRegistry = $registry;
-        $this->dataRepository = $dataRepository;
+        $this->storeRepository = $storeRepository;
         $this->resultPageFactory = $resultPageFactory;
         $this->resultForwardFactory = $resultForwardFactory;
         parent::__construct($context);
