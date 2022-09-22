@@ -32,6 +32,7 @@ class StoresResolver implements ResolverInterface
             'street' => $collection->getData(),
             'lat' => $collection->getData(),
             'lng' => $collection->getData(),
+            'description' => $collection->getData(),
             'phone' => $collection->getData(),
             'email' => $collection->getData(),
             'image' => $collection->getData(),
