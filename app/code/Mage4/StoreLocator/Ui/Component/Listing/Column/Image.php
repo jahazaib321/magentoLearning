@@ -9,7 +9,7 @@ use Magento\Ui\Component\Listing\Columns\Column;
 
 class Image extends Column
 {
-    const URL_PATH_EDIT = 'mage4/storelocator/edit';
+    const URL_PATH_EDIT = 'storelocator/item/editaction';
     /**
      * @var StoreManagerInterface
      */

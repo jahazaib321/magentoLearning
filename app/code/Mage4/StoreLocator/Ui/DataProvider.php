@@ -19,15 +19,6 @@ class DataProvider extends AbstractDataProvider
         parent::__construct($name, $primaryFieldName, $requestFieldName, $meta, $data);
         $this->collection = $collectionFactory->create();
     }
-
-//    public function getData()
-//    {
-//        $result = [];
-//        foreach ($this->collection->getItems() as $item) {
-//            $result[$item->getId()]['general'] = $item->getData();
-//        }
-//        return $result;
-//    }
     public function getData()
     {
         $result = [];
