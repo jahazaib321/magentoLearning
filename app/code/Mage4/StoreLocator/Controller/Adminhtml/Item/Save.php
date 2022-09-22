@@ -17,12 +17,12 @@ class Save extends Action
 
     public function __construct(
         Context $context,
-         StoreFactory                         $itemFactory,
+        StoreFactory                        $storeFactory,
         ImageUploader                       $imageUploader,
         DataObjectHelper                    $dataObjectHelper
     )
     {
-        $this->storeFactory = $itemFactory;
+        $this->storeFactory = $storeFactory;
         $this->imageUploader = $imageUploader;
         $this->dataObjectHelper = $dataObjectHelper;
         parent::__construct($context);
@@ -34,24 +34,18 @@ class Save extends Action
     public function execute()
     {
         $data = $this->getRequest()->getPost('general');
-
         $model = $this->storeFactory->create();
         $id = $this->getRequest()->getParam('id');
         $model->load($id);
 
-//        if (!$model->getId()) {
-//            unset($data['id']);
-//        }
-
-
         if ($data) {
             if (isset($data['image'][0]['name']) && isset($data['image'][0]['tmp_name'])) {
                 $data['image'] = $data['image'][0]['name'];
-                /** @var ImageUploader $this- >imageUploader */
+                /** @var ImageUploader $this->imageUploader */
                 $this->imageUploader->moveFileFromTmp($data['image']);
                 $this->dataObjectHelper->populateWithArray($model, $data, AbstractModel::class);
-            } elseif (isset($data['image'][0]['image']) && !isset($data['image'][0]['tmp_name'])) {
-                $data['image'] = $data['image'][0]['image'];
+            } elseif (isset($data['image'][0]['name']) && !isset($data['image'][0]['tmp_name'])) {
+                $data['image'] = $data['image'][0]['name'];
             } else {
                 $data['image'] = null;
             }
