@@ -1,6 +1,6 @@
 <?php
 
-namespace MageGuide\StoreLocator\Plugin\Resolver;
+namespace Mage4\StoreLocator\Plugin\Resolver;
 
 use Magento\Framework\GraphQl\Config\Element\Field;
 use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
@@ -23,7 +23,7 @@ class EntityUrl
         $pwaUrl = 'mage4Stores';
 
         if(!$result || !isset($result['type']) || $result['type'] === 'NOT_FOUND'){
-            $result = $this->resolveStoreUrls($url,$pwaUrl);
+            $result = $this->resolveStoreUrls($args['url'],$pwaUrl);
         }
         return $result;
     }
@@ -34,7 +34,7 @@ class EntityUrl
         if($pwaUrl === $url){
             $result = [
                 'id' => null,
-                'type' => 'STORE_LIST',
+                'type' => 'STORE_LOCATOR',
                 'canonical_url' => 'mage4Stores/',
                 'title' => ucwords(str_replace('_',' ',$pwaUrl)),
                 'meta_description' => "Stores",

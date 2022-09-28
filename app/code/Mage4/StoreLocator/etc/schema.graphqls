@@ -22,3 +22,6 @@ type StoreItem {
     email : String
     image : String
 }
+enum UrlRewriteEntityTypeEnum {
+    STORE_LOCATOR
+}
