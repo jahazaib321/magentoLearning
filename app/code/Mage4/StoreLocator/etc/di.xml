@@ -21,4 +21,11 @@
             </argument>
         </arguments>
     </type>
+    <type name="ScandiPWA\UrlrewriteGraphQl\Model\Resolver\EntityUrl">
+        <plugin name="store_locator_resolver_plugin"
+                type="Mage4\StoreLocator\Plugin\Resolver\EntityUrl"
+                sortOrder="1"
+                disabled="false"
+        />
+    </type>
 </config>
