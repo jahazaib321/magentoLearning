@@ -7,7 +7,7 @@ use Magento\Framework\GraphQl\Config\Element\Field;
 use Magento\Framework\GraphQl\Query\ResolverInterface;
 use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
 
-class StoresResolver implements ResolverInterface
+class GetStores implements ResolverInterface
 {
     private $collectionFactory;
 
@@ -22,7 +22,7 @@ class StoresResolver implements ResolverInterface
         $collection = $this->collectionFactory->create();
         return [
             'total_count' => $collection->count(),
-            'items' => $collection->getData()
         ];
     }
 }
+
